@@ -1,0 +1,15 @@
+p <- ggplot(sparrow.df, aes(x=survival, y=length, fill=survival)) + 
+  ylab("Length (mm)") + 
+  xlab("Survival status")
+p <- p + geom_boxplot(color="gray45", notch="TRUE", size=0.5, width=0.5, outlier.size = 2, alpha=1) + 
+  stat_summary(fun=mean, colour="gray38", geom="point", shape=18, size=5,show.legend = FALSE) 
+p <- p + stat_boxplot(geom ='errorbar', width=0.25) + facet_wrap(~sex)
+p <- p + theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
+                            panel.grid.minor = element_blank(), axis.line = element_line(colour = "black", size=0.5))
+p <- p + theme(axis.title.x = element_text(vjust=0.5, size=18, colour = "black"),
+               axis.text.x  = element_text(vjust=0.5, size=18, colour = "black"))
+p <- p+ theme(axis.title.y = element_text(size=18, colour = "black"),
+              axis.text.y  = element_text(size=16, colour = "black"))
+p1 <- p + theme(legend.position="none")
+print(p1) 
+
