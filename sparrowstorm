@@ -1,3 +1,8 @@
+#If you are in EU's Bio 309L, you are in the right place. 
+
+pal <- viridisLite::viridis(2)
+pal
+
 p <- ggplot(sparrow.df, aes(x=survival, y=length, fill=survival)) + 
   ylab("Length (mm)") + 
   xlab("Survival status")
@@ -6,6 +11,7 @@ p <- p + geom_boxplot(color="gray45", notch="TRUE", size=0.5, width=0.5, outlier
 p <- p + stat_boxplot(geom ='errorbar', width=0.25) + facet_wrap(~sex)
 p <- p + theme_bw() + theme(panel.border = element_blank(), panel.grid.major = element_blank(),
                             panel.grid.minor = element_blank(), axis.line = element_line(colour = "black", size=0.5))
+p <- p +  scale_fill_manual(values=pal)
 p <- p + theme(axis.title.x = element_text(vjust=0.5, size=18, colour = "black"),
                axis.text.x  = element_text(vjust=0.5, size=18, colour = "black"))
 p <- p+ theme(axis.title.y = element_text(size=18, colour = "black"),
